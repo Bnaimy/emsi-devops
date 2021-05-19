@@ -1,25 +1,27 @@
 #!/usr/bin/env bash
-# Install nginx web server
+#Configure Nginx to Use Custom Error Page 
+touch /var/www/html/notFound.html
+chmod o=wr /var/www/html/notFound.html
+echo "Ceci n'est pas une page" > /var/www/html/notFound.html
 
-apt-get update
-apt-get install -y nginx
+echo "
+     server {
+          listen      80 default_server;
+          listen      [::]:80 default_server;
+          location / {
+          root      /var/www/html;
+          index     index.html;
+          }
+            location /redirect_me {                                                       
+            rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;                                                 
+        }
+        
+error_page 404 /notFound.html;
+        location =/not_found.html {                                                       
+           root      /var/www/html/;
+            internal;                                        
+        }
+     }
+" > /etc/nginx/sites-available/default
 
-printf %s "server {
-  listen  80 default_server;
-  root    /var/www/html;
-  index   index.html index.htm;
-
-  location /redirect_me {
-    return 301 http://github.com/prohence;
-  }
-
-  error_page 404 /404.html;
-  location = /404.html {
-    root /var/www/html/;
-    internal;
-  }
-}
-" >/etc/nginx/sites-available/default
-echo "Holberton School" >/var/www/html/index.html
-printf "%s\n" "Ceci n'est pas une page" >/var/www/html/404.html
 service nginx restart
