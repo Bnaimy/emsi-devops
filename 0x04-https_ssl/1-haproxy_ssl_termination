@@ -56,8 +56,8 @@ frontend www-http
 
 backend www-backend
         balance roundrobin
-        server 3167-web-01 35.231.127.55:80 check
-        server 3167-web-02 54.234.46.8:80 check
+        server gc-3157-web-01-1617751021 35.229.49.186:80 check
+        server gc-3157-web-02-1618037739 35.190.162.166:80 check
 
 backend letsencrypt-backend
     server letsencrypt 127.0.0.1:54321
