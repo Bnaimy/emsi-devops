@@ -1,0 +1,36 @@
+ubuntu@gc-3167-web-01-1621432867:~$ sudo su root
+root@gc-3167-web-01-1621432867:/home/ubuntu# ufw status
+Status: inactive
+root@gc-3167-web-01-1621432867:/home/ubuntu# ufw enable
+Command may disrupt existing ssh connections. Proceed with operation (y|n)? y
+Firewall is active and enabled on system startup
+root@gc-3167-web-01-1621432867:/home/ubuntu# ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+443                        ALLOW       Anywhere                  
+443 (v6)                   ALLOW       Anywhere (v6)             
+
+root@gc-3167-web-01-1621432867:/home/ubuntu# ufw allow 22
+Rule added
+Rule added (v6)
+root@gc-3167-web-01-1621432867:/home/ubuntu# ufw allow 443
+Skipping adding existing rule
+Skipping adding existing rule (v6)
+root@gc-3167-web-01-1621432867:/home/ubuntu# ufw allow 80
+Rule added
+Rule added (v6)
+root@gc-3167-web-01-1621432867:/home/ubuntu# ufw status
+Status: active
+
+To                         Action      From
+--                         ------      ----
+443                        ALLOW       Anywhere                  
+22                         ALLOW       Anywhere                  
+80                         ALLOW       Anywhere                  
+443 (v6)                   ALLOW       Anywhere (v6)             
+22 (v6)                    ALLOW       Anywhere (v6)             
+80 (v6)                    ALLOW       Anywhere (v6)             
+
+root@gc-3167-web-01-1621432867:/home/ubuntu#
