@@ -1,10 +1,3 @@
-Check results
-=============
-
-W291:3:6:trailing whitespace
-
-Code
-=============
 #!/usr/bin/python3
 """
 Qyery 
