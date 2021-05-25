@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """
-Qyery 
-"""
 import requests
+"""
+Qyery 
 
 
 def count_words(subreddit, word_list, word_count={}, after=None):
