@@ -1,12 +1,13 @@
 #!/usr/bin/python3
-"""
-Qyery 
-"""
+"""Function to count words in all hot posts of a given Reddit subreddit."""
+
 import requests
 
 
 def count_words(subreddit, word_list, word_count={}, after=None):
-    import requests
+    """Queries the Reddit API and returns the count of words in
+    word_list in the titles of all the hot posts
+    of the subreddit"""
 
     sub_info = requests.get("https://www.reddit.com/r/{}/hot.json"
                             .format(subreddit),
